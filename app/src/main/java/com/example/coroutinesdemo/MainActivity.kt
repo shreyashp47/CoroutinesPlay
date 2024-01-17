@@ -16,9 +16,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch{
-            delay(299L)
-            Log.d(TAG, "COROUTINE: onCreate: ${Thread.currentThread().name}")
+           val result = doNetworkCall()
+            Log.d(TAG, "onCreate: $result")
+
         }
         Log.d(TAG, "onCreate: ${Thread.currentThread().name}")
+    }
+
+
+    private suspend fun doNetworkCall(): String{
+        delay(300L)
+        Log.d(TAG, "doNetworkCall: ${Thread.currentThread().name}")
+        return "Hello Network Call!"
     }
 }
