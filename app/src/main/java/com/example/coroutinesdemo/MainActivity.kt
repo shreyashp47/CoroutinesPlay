@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         dummy = findViewById(R.id.dummy)
-
+/*
         GlobalScope.launch(Dispatchers.IO){
            val result = doNetworkCall()
 
@@ -30,8 +31,25 @@ class MainActivity : AppCompatActivity() {
                 dummy.text = result
             }
             Log.d(TAG, "onCreate: $result")
+        }*/
 
+
+        runBlocking {
+            launch(Dispatchers.IO){
+                delay(3000L)
+                Log.d(TAG, "runBlocking launch 1: ${Thread.currentThread().name}")
+            }
+            launch(Dispatchers.IO){
+                delay(3000L)
+                Log.d(TAG, "runBlocking launch 2: ${Thread.currentThread().name}")
+            }
+            Log.d(TAG, "runBlocking start: ${Thread.currentThread().name}")
+            delay(5000L)
+            Log.d(TAG, "runBlocking end: ${Thread.currentThread().name}")
         }
+
+
+
     }
 
 
