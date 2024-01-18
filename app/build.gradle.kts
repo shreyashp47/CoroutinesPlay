@@ -46,4 +46,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha01")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha01")
 }
